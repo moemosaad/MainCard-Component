@@ -1,0 +1,541 @@
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-size: 16px;
+  line-height: 1.25;
+  color: #343434;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+#mainColumn {
+  border: none;
+  overflow: hidden;
+}
+.col-center-right,
+.col-right {
+  padding-left: 10px;
+  padding-right: 20px;
+}
+.col-center-right,
+.col-right {
+  float: left;
+  min-height: 1px;
+  position: relative;
+}
+div {
+  display: block;
+}
+
+/* Hero image container */
+
+#heroImageContainer {
+  position: relative;
+}
+
+#heroImageContainer .heroImage:not(.noCursor) {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  #heroImageContainer .heroImage.movie {
+    height: 290px;
+  }
+}
+
+#heroImageContainer .heroImage {
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #heroImageContainer.movie {
+    margin-top: 10px;
+  }
+}
+
+/* franchise link */
+.btn-primary {
+  color: #343434 !important;
+  background-color: #ffe400;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.25;
+  border-radius: 4px;
+}
+
+.white {
+  color: #fff;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.franchiseLink {
+  background-color: #000;
+  border-top: 1px solid #fff;
+  color: #fff;
+  padding: 5px 20px;
+  width: 100%;
+}
+
+#movie-title {
+  padding: 8px 10px;
+}
+
+#movie-title,
+#movieMenu,
+#newsMenu,
+#ticketingMenu,
+#tvMenu,
+h2.panel-heading {
+  font-family: "Neusa Next Pro Compact", Impact, Arial, sans-serif;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.visible-xs {
+  display: none !important;
+}
+@media (min-width: 768px) {
+  #topSection {
+    margin-top: 10px;
+  }
+}
+
+#topSection {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  #topSection #movie-image-section,
+  #topSection #tv-image-section {
+    padding-left: 0;
+  }
+}
+
+/* Movie Poster */
+
+#topSection img.posterImage {
+  cursor: pointer;
+  height: auto;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-sm-7 {
+    width: 29.16667%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-13,
+  .col-sm-16,
+  .col-sm-17,
+  .col-sm-7,
+  .col-sm-8 {
+    float: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .score_panel {
+    background-color: #efefef;
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-17 {
+    width: 70.83333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-13,
+  .col-sm-16,
+  .col-sm-17,
+  .col-sm-7,
+  .col-sm-8 {
+    float: left;
+  }
+}
+
+#rating_widget_desktop {
+  float: right;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .col-sm-17 {
+    width: 70.83333%;
+  }
+}
+
+.col-sm-11,
+.col-sm-12,
+.col-sm-13,
+.col-sm-16,
+.col-sm-17,
+.col-sm-7,
+.col-sm-8,
+.col-xs-11,
+.col-xs-12,
+.col-xs-15,
+.col-xs-24,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#rating_widget_desktop .rating_widget_desktop-header {
+  border-bottom: 1px solid #eee;
+  height: 0.6em;
+  margin-bottom: 1.5em;
+  margin-top: 5px;
+}
+
+/* score title */
+@media (min-width: 768px) {
+  .score_panel .audience-panel .scoreTitle,
+  .score_panel .tmeter-panel .scoreTitle {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .score_panel .tmeter-panel {
+    border-right: solid #fff 1px;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-13,
+  .col-sm-16,
+  .col-sm-17,
+  .col-sm-7,
+  .col-sm-8 {
+    float: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-16 {
+    width: 66.66667%;
+  }
+}
+
+.tmeter-panel {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .score_panel .tmeter-panel .critic-score {
+    margin-top: -10px;
+    width: 150px;
+    margin-left: 10px;
+  }
+}
+
+.score_panel .meter .meter-value,
+.score_panel .wts .meter-value {
+  margin-left: 5px;
+  margin-right: -10px;
+  vertical-align: top;
+}
+
+@media (min-width: 768px) {
+  .score_panel .meter .meter-value,
+  .score_panel .wts .meter-value {
+    font-size: 36px;
+  }
+}
+
+#scorePanel span.subtle,
+#topSection .pull-right.hidden-xs,
+.articleLink,
+.btn,
+.meter-value,
+.meter.media,
+h3 {
+  font-family: "Franklin Gothic FS Med", sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a.articleLink {
+  color: #000;
+}
+a.unstyled {
+  color: #343434;
+}
+
+#scorePanel span.subtle,
+#topSection .pull-right.hidden-xs,
+.articleLink,
+.btn,
+.meter-value,
+.meter.media,
+h3 {
+  font-family: "Franklin Gothic FS Med", sans-serif;
+}
+
+/* tomatometer */
+.score_panel .meter .meter-tomato,
+.score_panel .wts .meter-tomato {
+  margin-right: 0;
+}
+
+.icon.big.certified,
+.icon.big.certified_fresh {
+  /* background: url(/assets/pizza-pie/images/icons/global/cf-lg.3c29eff04f2.png) */
+  /* no-repeat;
+  background-size: cover; */
+}
+
+.icon.big {
+  height: 48px;
+  width: 48px;
+}
+
+span.subtle.superPageFontColor {
+  color: #343434;
+}
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+#newsAndFeatures,
+#scoreStats,
+.audience-info,
+.newsItem .byline,
+.newsItemText,
+.tmeter-tooltip-text {
+  font-family: "Franklin Gothic FS Book";
+}
+
+h3 {
+  line-height: 17px;
+  color: #545454;
+  margin: 0 0 12px 0;
+}
+
+@media (min-width: 768px) {
+  .score_panel .audience-panel .audience-score {
+    margin: -10px 10px 10px;
+  }
+}
+@media (min-width: 768px) {
+  .score_panel .tmeter-panel {
+    border-right: solid #fff 1px;
+  }
+}
+
+.score_panel .meter .meter-tomato,
+.score_panel .wts .meter-tomato {
+  margin-right: 0;
+}
+
+.icon.big.upright {
+  /* background: url(/assets/pizza-pie/images/icons/global/new-upright.ac91cc241ac.png) */
+  /* no-repeat;
+  background-size: cover; */
+}
+
+.tmeter-panel {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .col-sm-16 {
+    width: 66.66667%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-13,
+  .col-sm-16,
+  .col-sm-17,
+  .col-sm-7,
+  .col-sm-8 {
+    float: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-13,
+  .col-sm-16,
+  .col-sm-17,
+  .col-sm-7,
+  .col-sm-8 {
+    float: left;
+  }
+}
+.col-sm-11,
+.col-sm-12,
+.col-sm-13,
+.col-sm-16,
+.col-sm-17,
+.col-sm-7,
+.col-sm-8,
+.col-xs-11,
+.col-xs-12,
+.col-xs-15,
+.col-xs-24,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.glyphicon-question-sign:before {
+  color: #000;
+}
+
+.glyphicon-question-sign:before {
+  content: "\e085";
+}
+
+.glyphicon-question-sign:before,
+.purchase-buttons a:not([disabled]) {
+  color: #000;
+}
+
+.media > .pull-left {
+  padding-right: 10px;
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+}
+
+h3 {
+  line-height: 17px;
+  color: #545454;
+  margin: 0 0 12px 0;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+.media,
+.media-body {
+  zoom: 1;
+  overflow: hidden;
+}
+
+.media {
+  margin-top: 15px;
+}
+
+.trailer_image {
+  -webkit-animation: overlay-fade 1s 1;
+  -o-animation: overlay-fade 1s 1;
+  animation: overlay-fade 1s 1;
+}
+
+/* progress bar */
+
+.progress-bar.certified,
+.progress-bar.certified_fresh,
+.progress-bar.fresh {
+  background-color: #fa320a;
+}
+
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #337ab7;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+#scorePanel span.subtle,
+#topSection .pull-right.hidden-xs,
+.articleLink,
+.btn,
+.meter-value,
+.meter.media,
+h3 {
+  font-family: "Franklin Gothic FS Med", sans-serif;
+}
+
+#scorePanel p.critic_consensus {
+  font-size: 11.5px;
+  font-family: "Franklin Gothic FS Book";
+}
+
+.scoreTitle {
+  width: max-content;
+  padding: 10px;
+  font-size: 17px;
+  color: #000;
+  font-weight: initial;
+  font-family: "Neusa Next Pro Compact Medium";
+}
+.progress-bar.rotten {
+  background-color: #0ac855;
+}
+
+.progress {
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background-color: #d3d3d3;
+}
