@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Main from "./components/main.jsx";
+import bootstrap from "bootstrap";
+import $ from "jquery";
+import popper from "popper.js";
+import { Glyphicon } from "react-bootstrap";
 
 class App extends Component {
   render() {
-    return <Main />;
+    return (
+      <div id="main_container" className="container" role="main">
+        <Main />
+      </div>
+    );
   }
 }
 

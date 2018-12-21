@@ -9,25 +9,35 @@ const seedData = data => {
         { id: movie.id },
         {
           id: movie.id,
-          movie: {
-            title: movie.movie.title,
-            year: movie.movie.year,
-            image: movie.movie.image,
-            video: movie.movie.video
+          video: {
+            title: movie.video.title,
+            year: movie.video.year,
+            video: movie.video.video
           },
-          critics_consensus: movie.critics_consensus,
-          critic: {
-            tomatometer: movie.critic.tomatometer,
-            tomatometer_average_rating: movie.critic.tomatometer_average_rating,
-            reviews_counted: movie.critic.reviews_counted,
-            fresh: movie.critic.fresh,
-            rotten: movie.critic.rotten
+          poster: {
+            image: movie.poster.image
           },
-          audience: {
-            audience_score: movie.audience.audience_score,
-            audience_score_average_rating:
-              movie.audience.audience_score_average_rating,
-            user_ratings: movie.audience.user_ratings
+          score: {
+            all_critics: {
+              tomatometer: movie.score.all_critics.tomatometer,
+              average_rating: movie.score.all_critics.average_rating,
+              reviews_counted: movie.score.all_critics.reviews_counted,
+              fresh: movie.score.all_critics.fresh,
+              rotten: movie.score.all_critics.rotten
+            },
+            consensus: movie.score.consensus,
+            audience: {
+              audience_score: movie.score.audience.audience_score,
+              average_rating: movie.score.audience.average_rating,
+              user_ratings: movie.score.audience.user_ratings
+            },
+            top_critics: {
+                tomatometer: movie.score.top_critics.tomatometer,
+                average_rating: movie.score.top_critics.average_rating,
+                reviews_counted: movie.score.top_critics.reviews_counted,
+                fresh: movie.score.top_critics.fresh,
+                rotten: movie.score.top_critics.rotten
+              }
           }
         },
         {

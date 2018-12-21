@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Video from "./video.jsx";
-import MovieImage from "./movieImage.jsx";
-import ScorePanel from "./scorePanel.jsx";
+import Poster from "./poster.jsx";
+import Score from "./score.jsx";
 import Rating from "./rating.jsx";
 
 class Main extends Component {
@@ -9,37 +9,49 @@ class Main extends Component {
     super();
     this.state = {
       movie: {
-        _id: "",
+        _id:"",
         id: "",
-        movie: {
+        video: {
           title: "",
           year: "",
-          image: "",
           video: ""
         },
-        critics_consensus: "",
-        critic: {
-          tomatometer: "",
-          tomatometer_average_rating: "",
-          reviews_counted: "",
-          fresh: "",
-          rotten: ""
+        poster: {
+          image: ""
         },
-        audience: {
-          audience_score: "",
-          audience_score_average_rating: "",
-          user_ratings: ""
+        score: {
+          all_critics: {
+            tomatometer: "",
+            average_rating: "",
+            reviews_counted: "",
+            fresh: "",
+            rotten: ""
+          },
+          consensus: "",
+          audience: {
+            audience_score: "",
+            average_rating: "",
+            user_rating: ""
+          },
+          top_critics: {
+            tomatometer: "",
+            average_rating: "",
+            reviews_counted: "",
+            fresh: "",
+            rotten: ""
+          }
         }
       }
     };
   }
 
-  componentDidMount(id = 1) {
-    fetch(`/${id}`)
+  componentDidMount(id = 20) {
+    fetch(`/movies/${id}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
+        console.log(data[0])
         this.setState({ movie: data[0] });
         console.log(this.state.movie);
       })
@@ -50,10 +62,10 @@ class Main extends Component {
   render() {
     return (
       <div id="mainColumn" className="col mob col-center-right col-full-xs">
-        <Video movie={this.state.movie} />;
+        <Video video={this.state.movie.video} />
         <div id="topSection">
-          <MovieImage />
-          <ScorePanel />
+          <Poster poster={this.state.movie.poster} />
+          <Score score={this.state.movie.score} />
           <Rating />
         </div>
       </div>

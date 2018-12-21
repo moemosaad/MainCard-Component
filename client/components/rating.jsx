@@ -19,9 +19,9 @@ const Rating = () => {
             <img
               role="presentation"
               className="media-object pull-left js-rating_widget-user-thumb js-lazyLoad"
-              data-src="/assets/pizza-pie/images/shared/actor.default.tmb.d17de9e26da.gif"
+              //   data-src="/assets/pizza-pie/images/shared/actor.default.tmb.d17de9e26da.gif"
               //   src="/assets/pizza-pie/images/shared/actor.default.tmb.d17de9e26da.gif"
-              data-revealed="true"
+              //   data-revealed="true"
               //   style=" -webkit-animation: overlay-fade 1s 1; -o-animation: overlay-fade 1s 1; animation: overlay-fade 1s 1;"
             />
           </a>
@@ -91,7 +91,7 @@ const Rating = () => {
                 <textarea
                   className="rating_textbox-textarea js-rating_textbox-textarea"
                   placeholder="Add a Review (Optional)"
-                  autocomplete="off"
+                  autoComplete="off"
                 />
                 <div className="btn-group-xs rating_textbox-submit">
                   <span className="rating_textbox-submit-status js-rating_textbox-submit-status" />
@@ -155,7 +155,7 @@ const Rating = () => {
         className="modal fade in"
         role="dialog"
         aria-hidden="false"
-        style="display: none;"
+        style={{ display: "none" }}
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -166,7 +166,7 @@ const Rating = () => {
                   className="close pull-right"
                   data-dismiss="modal"
                   aria-label="Close"
-                  style="padding-left: 10px; padding-bottom: 10px;"
+                  style={{ paddingLeft: "10px", paddingBottom: "10px" }}
                 >
                   <span aria-hidden="true">×</span>
                 </button>
@@ -238,7 +238,7 @@ const Rating = () => {
                   <textarea
                     className="rating_textbox-textarea js-rating_textbox-textarea clearfix"
                     placeholder="Add a Review (Optional)"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                   <div className="btn-group-xs rating_textbox-submit clearfix">
                     <button className="rating_textbox-submit-btn js-rating_textbox-submit-btn btn">

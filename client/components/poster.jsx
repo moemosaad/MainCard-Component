@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieImage = props => {
+const Poster = ({ poster }) => {
   return (
     <div id="movie-image-section" className="col-sm-7 col-xs-9">
       <div className="center">
@@ -12,9 +12,9 @@ const MovieImage = props => {
           data-mpx-fwsite="rotten_tomatoes_video_vod"
         >
           <img
-            src="/assets/pizza-pie/images/poster_default.c8c896e70c3.gif"
+            src={poster.image}
             className="posterImage js-lazyLoad"
-            sizes="(max-width: 480px) 100vw"
+            // sizes="(max-width: 480px) 100vw"
 
             // style=" -webkit-animation: overlay-fade 1s 1; -o-animation: overlay-fade 1s 1; animation: overlay-fade 1s 1;"
           />
@@ -34,4 +34,4 @@ const MovieImage = props => {
     </div>
   );
 };
-export default MovieImage;
+export default Poster;
