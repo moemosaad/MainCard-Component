@@ -1,9 +1,17 @@
 import React from "react";
-import { Glyphicon } from "react-bootstrap";
-const Video = ({video}) => {
+import Trailer from "./trailer.jsx";
+const Video = ({ video, trailer, toggleTrailer }) => {
+  const handleClick = () => {
+    toggleTrailer();
+  };
+
   return (
     <div>
-      <div id="heroImageContainer" className="movie">
+      <div
+        id="heroImageContainer"
+        className="movie"
+        onClick={() => handleClick()}
+      >
         <a className="trailer_play_action_button">
           <div
             className="heroImage movie js-lazyLoad"
@@ -20,7 +28,6 @@ const Video = ({video}) => {
           />
           <div className="playButton in">
             <span className="glyphicon glyphicon-play" />
-            {/* <Glyphicon glyph="play" /> */}
           </div>
           <h1 className="title hidden-xs" data-type="title">
             {video.title}
@@ -33,6 +40,11 @@ const Video = ({video}) => {
         {video.title}
         <span className="h3 year"> ({video.year})</span>
       </h1>
+      <Trailer
+        video={video.video}
+        trailer={trailer}
+        toggleTrailer={toggleTrailer}
+      />
     </div>
   );
 };

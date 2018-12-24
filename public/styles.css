@@ -379,6 +379,9 @@ div.movie_content_area div.movie_info p.movie_synopsis {
   height: auto;
   padding-bottom: 10px;
   width: 100%;
+  -webkit-animation: overlay-fade 1s 1;
+  -o-animation: overlay-fade 1s 1;
+  animation: overlay-fade 1s 1;
 }
 @media (min-width: 768px) {
   #topSection {
@@ -1317,6 +1320,9 @@ a.unstyled.articleLink.fgm {
   background-size: cover;
   cursor: pointer;
   width: 100%;
+  -webkit-animation: overlay-fade 1s 1;
+  -o-animation: overlay-fade 1s 1;
+  animation: overlay-fade 1s 1;
 }
 @media (min-width: 768px) {
   .newsList {

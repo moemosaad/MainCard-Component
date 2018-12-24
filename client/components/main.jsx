@@ -9,7 +9,7 @@ class Main extends Component {
     super();
     this.state = {
       movie: {
-        _id:"",
+        _id: "",
         id: "",
         video: {
           title: "",
@@ -41,31 +41,57 @@ class Main extends Component {
             rotten: ""
           }
         }
-      }
+      },
+      all: true,
+      trailer: false
     };
+    this.getMovie = this.getMovie.bind(this);
+    this.toggleTopCritics = this.toggleTopCritics.bind(this);
+    this.toggleTrailer = this.toggleTrailer.bind(this);
   }
 
-  componentDidMount(id = 20) {
+  componentDidMount() {
+    this.getMovie();
+  }
+
+  toggleTopCritics(e) {
+    let bool = e.target.id === "all" ? true : false;
+    this.setState({ all: bool });
+  }
+
+  toggleTrailer() {
+    this.setState({ trailer: !this.state.trailer });
+  }
+
+  getMovie(id = 198) {
     fetch(`/movies/${id}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        console.log(data[0])
         this.setState({ movie: data[0] });
-        console.log(this.state.movie);
       })
       .catch(err => {
         console.error(err);
       });
   }
+
   render() {
     return (
       <div id="mainColumn" className="col mob col-center-right col-full-xs">
-        <Video video={this.state.movie.video} />
+        <Video
+          video={this.state.movie.video}
+          trailer={this.state.trailer}
+          toggleTrailer={this.toggleTrailer}
+        />
         <div id="topSection">
           <Poster poster={this.state.movie.poster} />
-          <Score score={this.state.movie.score} />
+          <Score
+            all_critics={this.all_critics}
+            score={this.state.movie.score}
+            toggleTopCritics={this.toggleTopCritics}
+            all={this.state.all}
+          />
           <Rating />
         </div>
       </div>

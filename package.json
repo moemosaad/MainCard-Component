@@ -15,7 +15,9 @@
   "homepage": "https://github.com/Themyscira19/MainCard-Component#readme",
   "scripts": {
     "start": "node index.js",
-    "test": "jest",
+    "test": "jest --verbose",
+    "test:watch": "jest --watchAll --verbose",
+    "test:coverage": "jest --verbose --coverage",
     "compile": "webpack -d --watch",
     "server": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run compile\" "
@@ -41,6 +43,8 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "concurrently": "^4.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.13.1",
     "webpack": "^4.27.1",

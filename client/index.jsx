@@ -9,7 +9,12 @@ import { Glyphicon } from "react-bootstrap";
 class App extends Component {
   render() {
     return (
-      <div id="main_container" className="container" role="main">
+      <div
+        id="main_container"
+        className="container"
+        role="main"
+        style={{ width: "770px" }}
+      >
         <Main />
       </div>
     );
