@@ -14,9 +14,8 @@ const Poster = ({ poster }) => {
           <img
             src={poster.image}
             className="posterImage js-lazyLoad"
+            id="poster"
             // sizes="(max-width: 480px) 100vw"
-
-            // style=" -webkit-animation: overlay-fade 1s 1; -o-animation: overlay-fade 1s 1; animation: overlay-fade 1s 1;"
           />
 
           <span className="play_button_big" />

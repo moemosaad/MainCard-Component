@@ -20,7 +20,7 @@ const AllCritics = ({ all_critics, consensus }) => {
                   }
                 />
                 <span className="meter-value superPageFontColor">
-                  <span>{all_critics.tomatometer}</span>%
+                  <span id="all_tomatometer">{all_critics.tomatometer}</span>%
                 </span>
               </a>
             </div>

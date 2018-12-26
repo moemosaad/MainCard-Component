@@ -63,7 +63,7 @@ class Main extends Component {
     this.setState({ trailer: !this.state.trailer });
   }
 
-  getMovie(id = 198) {
+  getMovie(id = 108) {
     fetch(`/movies/${id}`)
       .then(res => {
         return res.json();
@@ -87,7 +87,6 @@ class Main extends Component {
         <div id="topSection">
           <Poster poster={this.state.movie.poster} />
           <Score
-            all_critics={this.all_critics}
             score={this.state.movie.score}
             toggleTopCritics={this.toggleTopCritics}
             all={this.state.all}

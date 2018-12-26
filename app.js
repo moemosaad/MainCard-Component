@@ -17,8 +17,5 @@ const routes = require("./routes/routes.js");
 
 app.use("/movies", routes);
 
-const port = process.env.PORT || 9001;
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+module.exports = app;
+//exported so tests can be run without starting server
