@@ -61,11 +61,5 @@
       "@babel/preset-env",
       "@babel/preset-react"
     ]
-  },
-  "deleteThisPart-jest": {
-    "testEnvironment": "<rootDir>/tests/mongo-environment",
-    "globalSetup": "<rootDir>/tests/setup",
-    "globalTeardown": "<rootDir>/tests/teardown",
-    "resetModules": true
   }
 }
