@@ -1,6 +1,7 @@
 import React from "react";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import sinon from "sinon";
 import Rating from "../client/components/rating";
 import Score from "../client/components/score";
 import Poster from "../client/components/poster";
@@ -50,34 +51,66 @@ describe("Rating component", () => {
   });
 });
 
-// describe("")
+describe("Poster component", () => {
+  test("Renders", () => {
+    const wrapper = shallow(<Poster poster={movie.poster} />);
+    expect(wrapper.exists()).toBe(true);
+  });
+  test("Displays Poster", () => {
+    const wrapper = shallow(<Poster poster={movie.poster} />);
+    expect(wrapper.find("#poster").prop("src")).toEqual(
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ2qgbwUkZMB6Z3KUBla8OIzYNOBzMaNpoAeNofRYZj8V27vwD"
+    );
+  });
+});
 
-// describe("Score component", () => {
-//   test("Renders", () => {
-//     const wrapper = shallow(
-//       <Score score={movie.score} toggleTopCritics={() => {}} all={true} />
-//     );
-//     wrapper.find("#top").simulate("click");
-//     expect(wrapper.find("#top_tomatometer").props().textAnchor).toEqual("94");
-//   });
-// });
+describe("Score component", () => {
+  test("Renders", () => {
+    const wrapper = shallow(
+      <Score score={movie.score} toggleTopCritics={() => {}} all={true} />
+    );
+    expect(wrapper.exists()).toBe(true);
+  });
 
-// beforeAll(() => {
-//   const app = require("express")();
-//   app.listen(8080);
-//   const mongoose = require("mongoose");
-//   const db = mongoose.connect(
-//     "mongodb://localhost/spottypotatoes",
-//     { useNewUrlParser: true }
-//   );
-//   const Movie = require("../models/Movie.js");
-// });
+  test("Toggles Top Critics", () => {
+    const spy = sinon.spy();
+    const wrapper = mount(
+      <Score score={movie.score} toggleTopCritics={spy} all={true} />
+    );
+    wrapper.find("#top").simulate("click");
+    expect(spy.calledOnce).toBe(true);
+  });
+});
 
-// afterAll(() => {});
+import regeneratorRuntime from "regenerator-runtime";
 
-// describe("connects to database", () => {
-//   it("retrieves all movies from database", async () => {
-//     let Movies = await Movie.find({}).exec();
-//     expect(Movies.length).toEqual(100);
-//   });
-// });
+const request = require("supertest");
+const app = require("../app.js");
+const db = require("../db/config.js");
+
+describe("API Requests", () => {
+  test("Should make a GET request", async () => {
+    const response = await request(app).get(`/movies/${108}`);
+    const body = JSON.parse(response.text);
+    expect(body[0].video.title).toBe("Gaucho, The");
+  });
+});
+
+const puppeteer = require("puppeteer");
+
+describe("End to end test", () => {
+  test("click handler works", async () => {
+    let server = await app.listen(process.env.PORT || 9001);
+    let browser = await puppeteer.launch({
+      headless: true
+    });
+    let page = await browser.newPage();
+    await page.goto("http://localhost:9001/");
+    await page.waitForSelector("#top");
+    await page.click("#top");
+    const html = await page.$eval("#top_tomatometer", e => e.innerHTML);
+    expect(html).toBe("94");
+    browser.close();
+    server.close();
+  }, 2000000);
+});
