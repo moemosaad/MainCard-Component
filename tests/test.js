@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 const movie = {
   id: 108,
   video: {
-    title: "Gaucho, The",
+    title: "The Gaucho",
     year: 1996,
     video: "https://www.youtube.com/watch?v=1ywA8TtwJ50"
   },
@@ -92,7 +92,7 @@ describe("API Requests", () => {
   test("Should make a GET request", async () => {
     const response = await request(app).get(`/movies/${108}`);
     const body = JSON.parse(response.text);
-    expect(body[0].video.title).toBe("Gaucho, The");
+    expect(body[0].video.title).toBe("The Gaucho");
   });
 });
 

@@ -64,6 +64,7 @@ class Main extends Component {
   }
 
   getMovie(id = 108) {
+    id = window.location.search.substr(1).split("=")[1] || id;
     fetch(`/movies/${id}`)
       .then(res => {
         return res.json();
