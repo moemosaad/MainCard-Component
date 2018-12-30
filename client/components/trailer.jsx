@@ -20,7 +20,7 @@ const Trailer = ({ video, trailer, toggleTrailer }) => {
           <div id="videoPlayer" style={{ width: "100%", height: "100%" }}>
             <iframe
               className="player"
-              src={video.replace("watch?v=", "embed/") + "?autoplay=1&rel=0"}
+              src={video + "?autoplay=1&rel=0"}
               frameBorder="0"
               allowFullScreen
             />

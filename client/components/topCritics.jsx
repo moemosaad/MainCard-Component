@@ -1,5 +1,5 @@
 import React from "react";
-const TopCritics = ({ top_critics, consensus }) => {
+const TopCritics = ({ top_critics, consensus, all_critics_tomatometer }) => {
   return (
     <div id="top-critics-numbers" className="tab-pane active">
       <div className="row">
@@ -11,7 +11,18 @@ const TopCritics = ({ top_critics, consensus }) => {
                 className="unstyled articleLink"
                 id="tomato_meter_link"
               >
-                <span className="meter-tomato icon big medium-xs fresh pull-left" />
+                <span
+                  className={
+                    "meter-tomato icon big medium-xs " +
+                    (top_critics.tomatometer > 59
+                      ? top_critics.tomatometer > 74 &&
+                        all_critics_tomatometer > 74
+                        ? "certified_fresh"
+                        : "fresh"
+                      : "rotten") +
+                    " pull-left"
+                  }
+                />
                 <span className="meter-value superPageFontColor">
                   <span id="top_tomatometer">{top_critics.tomatometer}</span>%
                 </span>
@@ -51,7 +62,13 @@ const TopCritics = ({ top_critics, consensus }) => {
           style={{ paddingLeft: "0" }}
         >
           <div className="progress">
-            <div className="progress-bar fresh" style={{ width: "68%" }} />
+            <div
+              className={
+                "progress-bar " +
+                (top_critics.tomatometer > 59 ? "fresh" : "rotten")
+              }
+              style={{ width: top_critics.tomatometer + "%" }}
+            />
           </div>
 
           <p className="critic_consensus superPageFontColor">

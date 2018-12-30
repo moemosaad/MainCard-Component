@@ -70,7 +70,10 @@ class Main extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ movie: data[0] });
+        if (data.length === 0) {
+        } else {
+          this.setState({ movie: data[0] });
+        }
       })
       .catch(err => {
         console.error(err);

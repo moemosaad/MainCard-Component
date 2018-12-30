@@ -9743,7 +9743,7 @@ table.verticalCenter > tbody > tr > td {
 }
 .icon.big.certified,
 .icon.big.certified_fresh {
-  background: url(/assets/pizza-pie/images/icons/global/cf-lg.3c29eff04f2.png)
+  background: url(./images/certified.png)
     no-repeat;
   background-size: cover;
 }
@@ -9758,7 +9758,7 @@ table.verticalCenter > tbody > tr > td {
   background-size: cover;
 }
 .icon.big.rotten {
-  background: url(/assets/pizza-pie/images/icons/global/new-rotten-lg.ecdfcf9596f.png)
+  background: url(./images/rotten.png)
     no-repeat;
   background-size: cover;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AllCritics = ({ all_critics, consensus }) => {
+const AllCritics = ({ all_critics, consensus, top_critics_tomatometer }) => {
   return (
     <div id="all-critics-numbers" className="tab-pane active">
       <div className="row">
@@ -15,7 +15,12 @@ const AllCritics = ({ all_critics, consensus }) => {
                 <span
                   className={
                     "meter-tomato icon big medium-xs " +
-                    (all_critics.tomatometer > 59 ? "fresh" : "rotten") +
+                    (all_critics.tomatometer > 59
+                      ? all_critics.tomatometer > 74 &&
+                        top_critics_tomatometer > 74
+                        ? "certified_fresh"
+                        : "fresh"
+                      : "rotten") +
                     " pull-left"
                   }
                 />

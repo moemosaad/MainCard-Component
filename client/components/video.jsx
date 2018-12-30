@@ -16,9 +16,11 @@ const Video = ({ video, trailer, toggleTrailer }) => {
           <div
             className="heroImage movie js-lazyLoad"
             style={{
-              backgroundImage: `url(https://img.youtube.com/vi/${
-                video.video.split("=")[1]
-              }/hqdefault.jpg)`,
+              backgroundImage: video.video
+                ? `url(https://img.youtube.com/vi/${
+                    video.video.split("embed/")[1]
+                  }/hqdefault.jpg)`
+                : "",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center 40%",
