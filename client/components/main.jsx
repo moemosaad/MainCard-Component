@@ -3,6 +3,7 @@ import Video from "./video.jsx";
 import Poster from "./poster.jsx";
 import Score from "./score.jsx";
 import Rating from "./rating.jsx";
+import axios from "axios";
 
 class Main extends Component {
   constructor() {
@@ -64,12 +65,12 @@ class Main extends Component {
   }
 
   getMovie(id = 108) {
-    id = window.location.search.substr(1).split("=")[1] || id;
-    fetch(`/movies/${id}`)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
+    // id = window.location.search.substr(1).split("=")[1] || id;
+    let url = document.URL.substr(-3);
+    id = Number(url) ? url : id;
+    axios
+      .get(`http://localhost:9001/movies/${id}`)
+      .then(({ data }) => {
         if (data.length === 0) {
         } else {
           this.setState({ movie: data[0] });
@@ -82,7 +83,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div id="mainColumn" className="col mob col-center-right col-full-xs">
+      <div>
         <Video
           video={this.state.movie.video}
           trailer={this.state.trailer}

@@ -23,7 +23,6 @@ const Rating = () => {
               //   src="/assets/pizza-pie/images/shared/actor.default.tmb.d17de9e26da.gif"
               //   data-revealed="true"
               //   style=" -webkit-animation: overlay-fade 1s 1; -o-animation: overlay-fade 1s 1; animation: overlay-fade 1s 1;"
-              src="./images/default.gif"
             />
           </a>
           <div className="media-body">

@@ -32,12 +32,12 @@ const seedData = data => {
               user_ratings: movie.score.audience.user_ratings
             },
             top_critics: {
-                tomatometer: movie.score.top_critics.tomatometer,
-                average_rating: movie.score.top_critics.average_rating,
-                reviews_counted: movie.score.top_critics.reviews_counted,
-                fresh: movie.score.top_critics.fresh,
-                rotten: movie.score.top_critics.rotten
-              }
+              tomatometer: movie.score.top_critics.tomatometer,
+              average_rating: movie.score.top_critics.average_rating,
+              reviews_counted: movie.score.top_critics.reviews_counted,
+              fresh: movie.score.top_critics.fresh,
+              rotten: movie.score.top_critics.rotten
+            }
           }
         },
         {

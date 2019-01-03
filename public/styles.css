@@ -42,6 +42,10 @@
   background: url(./images/tomato.png) no-repeat;
   background-size: cover;
 }
+.js-rating_widget-user-thumb {
+  background: url(./images/default.gif) no-repeat;
+  background-size: cover;
+}
 .actorThumb,
 .bannerPic,
 .newsPhoto {
