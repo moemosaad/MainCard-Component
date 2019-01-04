@@ -68,8 +68,10 @@ class Main extends Component {
     // id = window.location.search.substr(1).split("=")[1] || id;
     let url = document.URL.substr(-3);
     id = Number(url) ? url : id;
+    let aws_url = process.env.PRODUCTION_URL || 'http://localhost:9001';
+console.log(aws_url+'/movies/'+id);
     axios
-      .get(`http://localhost:9001/movies/${id}`)
+      .get(`${aws_url}/movies/${id}`)
       .then(({ data }) => {
         if (data.length === 0) {
         } else {
