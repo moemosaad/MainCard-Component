@@ -46,6 +46,7 @@ class Main extends Component {
       all: true,
       trailer: false
     };
+    this.API_URL = process.env.NODE_ENV === 'production' ? 'http://ec2-3-17-128-193.us-east-2.compute.amazonaws.com' : 'http://localhost:9001';
     this.getMovie = this.getMovie.bind(this);
     this.toggleTopCritics = this.toggleTopCritics.bind(this);
     this.toggleTrailer = this.toggleTrailer.bind(this);
@@ -68,10 +69,9 @@ class Main extends Component {
     // id = window.location.search.substr(1).split("=")[1] || id;
     let url = document.URL.substr(-3);
     id = Number(url) ? url : id;
-    let aws_url = process.env.PRODUCTION_URL || 'http://localhost:9001';
-console.log(aws_url+'/movies/'+id);
+	console.log(this.API_URL);
     axios
-      .get(`${aws_url}/movies/${id}`)
+      .get(this.API_URL+'/movies/'+id)
       .then(({ data }) => {
         if (data.length === 0) {
         } else {
