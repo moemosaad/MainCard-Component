@@ -208,7 +208,7 @@ th {
   src: url(/assets/pizza-pie/fonts/NeusaNextPro-CompactRegular.eot);
   src: url(/assets/pizza-pie/fonts/NeusaNextPro-CompactRegular.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/NeusaNextPro-CompactRegular.woff2) format("woff2"),
+    url(./main/fonts/NeusaNextPro-CompactRegular.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/NeusaNextPro-CompactRegular.woff) format("woff"),
     url(/assets/pizza-pie/fonts/NeusaNextPro-CompactRegular.ttf)
       format("truetype"),
@@ -222,7 +222,7 @@ th {
   src: url(/assets/pizza-pie/fonts/NeusaNextPro-CompactMedium.eot);
   src: url(/assets/pizza-pie/fonts/NeusaNextPro-CompactMedium.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/NeusaNextPro-CompactMedium.woff2) format("woff2"),
+    url(./main/fonts/NeusaNextPro-CompactMedium.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/NeusaNextPro-CompactMedium.woff) format("woff"),
     url(/assets/pizza-pie/fonts/NeusaNextPro-CompactMedium.ttf)
       format("truetype"),
@@ -236,7 +236,7 @@ th {
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Med.eot);
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Med.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/FranklinGothicFS-Med.woff2) format("woff2"),
+    url(./main/fonts/FranklinGothicFS-Med.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Med.woff) format("woff"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Med.ttf) format("truetype"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Med.svg#FranklinGothicFS-Med)
@@ -249,7 +249,7 @@ th {
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Book.eot);
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Book.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/FranklinGothicFS-Book.woff2) format("woff2"),
+    url(./main/fonts/FranklinGothicFS-Book.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Book.woff) format("woff"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Book.ttf) format("truetype"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Book.svg#FranklinGothicFS-Book)
@@ -262,7 +262,7 @@ th {
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Demi.eot);
   src: url(/assets/pizza-pie/fonts/FranklinGothicFS-Demi.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/FranklinGothicFS-Demi.woff2) format("woff2"),
+    url(./main/fonts/FranklinGothicFS-Demi.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Demi.woff) format("woff"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Demi.ttf) format("truetype"),
     url(/assets/pizza-pie/fonts/FranklinGothicFS-Demi.svg#FranklinGothicFS-Demi)
@@ -346,7 +346,7 @@ th {
   src: url(/assets/pizza-pie/fonts/glyphicons-halflings-regular.eot);
   src: url(/assets/pizza-pie/fonts/glyphicons-halflings-regular.eot?#iefix)
       format("embedded-opentype"),
-    url(./fonts/glyphicons-halflings-regular.woff2) format("woff2"),
+    url(./main/fonts/glyphicons-halflings-regular.woff2) format("woff2"),
     url(/assets/pizza-pie/fonts/glyphicons-halflings-regular.woff)
       format("woff"),
     url(/assets/pizza-pie/fonts/glyphicons-halflings-regular.ttf)
