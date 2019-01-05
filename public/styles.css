@@ -31,19 +31,19 @@
   float: right;
 }
 #heroImageContainer .heroImage.movie {
-  /* background-image: url(./images/poster_default.gif); */
+  /* background-image: url(./main/images/poster_default.gif); */
   background-size: cover;
 }
 .icon.big.medium-xs.rotten {
-  background: url(./images/rotten.png) no-repeat;
+  background: url(./main/images/rotten.png) no-repeat;
   background-size: cover;
 }
 .icon.big.medium-xs.fresh {
-  background: url(./images/tomato.png) no-repeat;
+  background: url(./main/images/tomato.png) no-repeat;
   background-size: cover;
 }
 .js-rating_widget-user-thumb {
-  background: url(./images/default.gif) no-repeat;
+  background: url(./main/images/default.gif) no-repeat;
   background-size: cover;
 }
 .actorThumb,
@@ -3939,34 +3939,34 @@ fieldset[disabled]
   line-height: 0;
 }
 .rating_stars .rating_star.rating_star-label-left {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -24px;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .rating_stars .rating_star.rating_star-label-right {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 .rating_stars .rating_star.score.rating_star-label-left,
 .rating_stars .rating_star.score ~ .rating_star-label-left {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -96px;
 }
 .rating_stars .rating_star.score.rating_star-label-right,
 .rating_stars .rating_star.score ~ .rating_star-label-right {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -120px;
 }
 .rating_stars .rating_star:hover.rating_star-label-left,
 .rating_stars .rating_star:hover ~ .rating_star-label-left {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -48px;
 }
 .rating_stars .rating_star:hover.rating_star-label-right,
 .rating_stars .rating_star:hover ~ .rating_star-label-right {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -72px;
 }
 #rating_widget_modal .rating_widget_modal-star .rating_stars .rating_star {
@@ -3988,7 +3988,7 @@ fieldset[disabled]
   .rating_stars
   .rating_star.score
   ~ .rating_star-label-left {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -192px;
 }
 #rating_widget_modal
@@ -4000,7 +4000,7 @@ fieldset[disabled]
   .rating_stars
   .rating_star.score
   ~ .rating_star-label-right {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -240px;
 }
 #rating_widget_modal
@@ -4012,7 +4012,7 @@ fieldset[disabled]
   .rating_stars
   .rating_star:hover
   ~ .rating_star-label-left {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -96px;
 }
 #rating_widget_modal
@@ -4024,7 +4024,7 @@ fieldset[disabled]
   .rating_stars
   .rating_star:hover
   ~ .rating_star-label-right {
-  background-image: url(./images/icon-star.png);
+  background-image: url(./main/images/icon-star.png);
   background-position-y: -144px;
 }
 #rating_widget_modal

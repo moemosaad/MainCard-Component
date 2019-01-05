@@ -9690,7 +9690,7 @@ table.verticalCenter > tbody > tr > td {
   .icon.medium.tiny-xs.upright,
   .icon.small.tiny-xs.upright,
   .icon.tiny.tiny-xs.upright {
-    background: url(./images/popcorn.png) no-repeat;
+    background: url(./main/images/popcorn.png) no-repeat;
     background-size: cover;
   }
   .icon.big.tiny-xs.rotten,
@@ -9743,7 +9743,7 @@ table.verticalCenter > tbody > tr > td {
 }
 .icon.big.certified,
 .icon.big.certified_fresh {
-  background: url(./images/certified.png)
+  background: url(./main/images/certified.png)
     no-repeat;
   background-size: cover;
 }
@@ -9754,16 +9754,16 @@ table.verticalCenter > tbody > tr > td {
   background-size: cover;
 }
 .icon.big.upright {
-  background: url(./images/popcorn.png) no-repeat;
+  background: url(./main/images/popcorn.png) no-repeat;
   background-size: cover;
 }
 .icon.big.rotten {
-  background: url(./images/rotten.png)
+  background: url(./main/images/rotten.png)
     no-repeat;
   background-size: cover;
 }
 .icon.big.spilled {
-  background: url(./images/rottenpopcorn.png) no-repeat;
+  background: url(./main/images/rottenpopcorn.png) no-repeat;
   background-size: cover;
 }
 .icon.big.wts,
@@ -9884,7 +9884,7 @@ icon.medium.wts {
 }
 .icon.big.popcorn,
 .icon.tiny.upright {
-  background: url(./images/popcorn.png) no-repeat;
+  background: url(./main/images/popcorn.png) no-repeat;
   background-size: cover;
 }
 .icon.tiny.rotten {
