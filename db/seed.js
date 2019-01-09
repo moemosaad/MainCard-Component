@@ -1,7 +1,11 @@
-const fs = require("fs");
+// const fs = require("fs");
+console.time("dbsave");
 const Movie = require("../models/Movie.js");
+const newData = require("./generateData.js");
+const db = require("./config.js");
 
-let data = fs.readFileSync(__dirname + "/data.json");
+// let data = fs.readFileSync(__dirname + "/data.json");
+// console.log(newData.length);
 const seedData = data => {
   Promise.all(
     data.map(movie => {
@@ -51,7 +55,11 @@ const seedData = data => {
     })
     .catch(err => {
       console.error(err);
+    })
+    .then(() => {
+      console.timeEnd("dbsave");
     });
 };
 
-module.exports = seedData(JSON.parse(data.toString()));
+// module.exports = seedData(newData);
+seedData(newData);
