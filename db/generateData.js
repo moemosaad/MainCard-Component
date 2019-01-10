@@ -1,4 +1,6 @@
 const fs = require("fs");
+const Movie = require("../models/Movie.js");
+const db = require("./config.js");
 
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
 let dataInfo = {
@@ -33,7 +35,7 @@ var extractRandomData = () => {
 };
 
 var generateRandomData = () => {
-  for (var i = 101; i < 30101; i++) {
+  for (var i = 101; i < 1000101; i++) {
     newData[i] = {
       id: i,
       video: {
@@ -49,8 +51,10 @@ var generateRandomData = () => {
           tomatometer: randomize("tomatometer"),
           average_rating: randomize("average_rating"),
           reviews_counted: randomize("reviews_counted"),
-          fresh: randomize("fresh"),
-          rotten: randomize("rotten")
+          fresh: randomize("fresh")
+          // get rotten() {
+          //   return this.reviews_counted - this.fresh;
+          // }
         },
         consensus: randomize("consensus"),
         audience: {
@@ -62,11 +66,23 @@ var generateRandomData = () => {
           tomatometer: randomize("tomatometer"),
           average_rating: randomize("average_rating"),
           reviews_counted: randomize("reviews_counted"),
-          fresh: randomize("fresh"),
-          rotten: randomize("rotten")
+          fresh: randomize("fresh")
+          // get rotten() {
+          //   return this.reviews_counted - this.fresh;
+          // }
         }
       }
     };
+    newData[i].score.all_critics.rotten =
+      newData[i].score.top_critics.reviews_counted -
+      newData[i].score.top_critics.fresh;
+    newData[i].score.top_critics.rotten =
+      newData[i].score.top_critics.reviews_counted -
+      newData[i].score.top_critics.fresh;
+    // console.log(newData);
+  }
+  if (i % 100 === 0) {
+    console.log(i, "was inserted");
   }
 };
 
