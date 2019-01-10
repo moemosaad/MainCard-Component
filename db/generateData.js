@@ -1,7 +1,7 @@
 const fs = require("fs");
 const Movie = require("../models/Movie.js");
 const db = require("./config.js");
-
+const converter = require("json-2-csv");
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
 let dataInfo = {
   title: "video",
@@ -90,6 +90,8 @@ var randomize = data => {
   let dataArr = randomData[data];
   return dataArr[Math.floor(Math.random() * Math.floor(dataArr.length))];
 };
+
+var json2csvCallback;
 
 extractRandomData();
 generateRandomData();
