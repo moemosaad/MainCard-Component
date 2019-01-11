@@ -1,9 +1,11 @@
 const fs = require("fs");
 const Movie = require("../models/Movie.js");
 const db = require("./config.js");
+const sqlDb = require("./PostgreSQL/seedPostgres.js");
 // const seedMongoData = require("./seed.js");
 console.time("dbsave");
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
+
 // console.log(data);
 let dataInfo = {
   title: "video",
@@ -84,7 +86,8 @@ var generateRandomData = () => {
     var newData;
     var dataArr;
     var batchSize = 800;
-    var limit = 20000;
+    var limit = 1000000;
+    var count = 0;
     // var total = 0;
     var start = 0;
     var end = batchSize;
@@ -109,36 +112,39 @@ var generateRandomData = () => {
       //   }
       // });
       var writeToFile = (newData, file, num, end) => {
-        if (num === 101) {
-          // file.write("[" + JSON.stringify(newData) + ", ");
-          batchData += "[" + JSON.stringify(newData) + ", ";
-          console.log("ok");
-        } else if (num >= end) {
+        // if (num === 101) {
+        //   // file.write("[" + JSON.stringify(newData) + ", ");
+        //   batchData += JSON.stringify(newData) + ", ";
+        //   console.log("ok");
+        // } else
+        if (num >= end - 1) {
+          count++;
           console.log("ok");
           // file.write(JSON.stringify(newData) + "]");
-          batchData += JSON.stringify(newData) + "]";
+          batchData += JSON.stringify(newData);
           file.write(batchData);
           console.timeEnd("dbsave");
-          console.log(end);
+          console.log(end, count);
           return;
-        } else if (num % batchSize === 101) {
+        } else if (num % batchSize === 100) {
+          count++;
           // file.write(JSON.stringify(newData) + ", ");
-          batchData += JSON.stringify(newData) + ", ";
+          batchData += JSON.stringify(newData) + "\n";
           file.write(batchData);
           batchData = "";
         } else {
-          batchData += JSON.stringify(newData) + ", ";
+          count++;
+          batchData += JSON.stringify(newData) + "\n";
         }
       };
-      for (var i = 101; i < limit + 102; i++) {
-        // let index = i - 101;
+      for (var i = 101; i < limit + 101; i++) {
+        // console.log("write to file");
         var decoratedData = decorateNewData(newData, i);
         writeToFile(decoratedData, csvfile, i, limit + 101);
-        // console.log(batchData);
-        // console.log(i);
       }
     };
     storeBatch();
+    console.log("ok");
     csvfile.end(() => {
       console.log("end");
       return;
@@ -146,6 +152,6 @@ var generateRandomData = () => {
   });
 };
 
-generateRandomData();
+// generateRandomData();
 
 // module.exports = generateRandomData();
