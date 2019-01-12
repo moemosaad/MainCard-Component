@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 const client = new Client();
 
-await client.connect();
+client.connect();
 
-module.exports = client.connect();
+module.exports = client;

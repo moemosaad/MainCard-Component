@@ -1,4 +1,6 @@
 node_modules
 .env
 public/bundle.js
-db/data.json
+
+#csv file
+/db/newData.csv
