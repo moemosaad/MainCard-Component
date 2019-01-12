@@ -129,12 +129,12 @@ var generateRandomData = () => {
         } else if (num % batchSize === 100) {
           count++;
           // file.write(JSON.stringify(newData) + ", ");
-          batchData += JSON.stringify(newData) + "\n";
+          batchData += JSON.stringify(newData) + "," + "\n";
           file.write(batchData);
           batchData = "";
         } else {
           count++;
-          batchData += JSON.stringify(newData) + "\n";
+          batchData += JSON.stringify(newData) + "," + "\n";
         }
       };
       for (var i = 101; i < limit + 101; i++) {
