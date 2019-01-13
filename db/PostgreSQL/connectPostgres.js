@@ -11,13 +11,13 @@ client.connect((err, client, done) => {
   if (err) {
     console.log("error:", err);
   }
-  // client.query(sql, (err, result) => {
-  //   console.log("ok2");
-  //   done();
-  //   if (err) {
-  //     console.log("err: ", err);
-  //   }
-  // });
+  client.query(sql, (err, result) => {
+    console.log("ok2");
+    // done();
+    if (err) {
+      console.log("err: ", err);
+    }
+  });
 });
 
 module.exports = client;
