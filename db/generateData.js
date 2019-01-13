@@ -1,12 +1,13 @@
 const fs = require("fs");
 const Movie = require("../models/Movie.js");
-const db = require("./config.js");
+// const db = require("./config.js");
 // const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const Json2csvParser = require("json2csv").Parser;
 // const sqlDb = require("./PostgreSQL/seedPostgres.js");
-const seedMongoData = require("./seed.js");
-console.time("dbsave");
+// const { seedMongoData, seedSQLData } = require("./seed.js");
+// const seedMongoData = require("./seed.js");
 
+console.time("dbsave");
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
 
 let dataInfo = {
@@ -72,12 +73,12 @@ const createNewData = (newData, index) => {
 
 const generateRandomData = () => {
   const batchSize = 800;
-  const limit = 8000;
+  const limit = 1000;
   let idCount = 101;
   let headerFlag = false;
 
-  fs.truncate("./newData.csv", 0, () => {
-    let csvfile = fs.createWriteStream("./newData.csv");
+  fs.truncate("./newDataTest.csv", 0, () => {
+    let csvfile = fs.createWriteStream("./newDataTest.csv");
 
     let writeBatchToFile = () => {
       let newData;
@@ -94,9 +95,9 @@ const generateRandomData = () => {
         batchStart++;
         idCount++;
       }
-      console.log(idCount, headerFlag);
+      console.log(idCount);
 
-      batchData = convertJSONToCSV(batchData, headerFlag);
+      batchData = convertJSONToCSV(batchData, headerFlag, idCount, limit);
       csvfile.write(batchData);
 
       if (!headerFlag) {
@@ -107,21 +108,32 @@ const generateRandomData = () => {
     };
 
     writeBatchToFile();
+
     csvfile.end(() => {
       return;
     });
+
     csvfile.on("finish", () => {
       console.log("writes are now finished");
-      console.timeEnd("dbsave");
-      // seedMongoData();
+      // seedMongoData(() => {
+      //   fs.unlink("./newDataTest.csv", err => {
+      //     if (err) {
+      //       console.log("file unlink error: ", err);
+      //     }
+      //     console.log("deleted csv file");
+      //     console.timeEnd("dbsave");
+      //   });
+      // });
     });
   });
 };
 
-const convertJSONToCSV = (batchData, headerFlag) => {
+const convertJSONToCSV = (batchData, headerFlag, count, limit) => {
   let json2csv;
   let fields = [
     "movie_id",
+    "title",
+    "year",
     "video",
     "picture",
     "all_critics_tomatometer",
@@ -131,7 +143,6 @@ const convertJSONToCSV = (batchData, headerFlag) => {
     "all_critics_rotten",
     "consensus",
     "audience_score",
-    "audience_average_rating",
     "user_ratings",
     "top_critics_tomatometer",
     "top_critics_average_rating",
@@ -142,11 +153,15 @@ const convertJSONToCSV = (batchData, headerFlag) => {
 
   if (!headerFlag) {
     json2csv = new Json2csvParser({ fields });
-  } else {
+  } else if (headerFlag) {
     json2csv = new Json2csvParser({ fields, header: false });
   }
 
-  let csv = json2csv.parse(batchData) + "\n";
+  let csv = json2csv.parse(batchData);
+  if (count < limit) {
+    csv += "\n";
+  }
+
   return csv;
 };
 

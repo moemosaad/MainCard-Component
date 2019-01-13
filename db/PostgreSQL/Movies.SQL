@@ -1,7 +1,8 @@
+
 DROP DATABASE IF EXISTS spottypotatoes;
+DROP TABLE IF EXISTS movie;
 
 CREATE DATABASE spottypotatoes;
-
 CREATE TABLE movie (
     id SERIAL,
     movie_id INT NOT NULL,
@@ -10,19 +11,21 @@ CREATE TABLE movie (
     video VARCHAR(255) NOT NULL,
     picture VARCHAR(255) NOT NULL,
     all_critics_tomatometer INT NOT NULL,
-    all_critics_average_rating INT NOT NULL,
+    all_critics_average_rating DOUBLE PRECISION NOT NULL,
     all_critics_reviews_counted INT NOT NULL,
     all_critics_fresh INT NOT NULL,
     all_critics_rotten INT NOT NULL,
-    consensus VARCHAR(255) NOT NULL,
+    consensus TEXT NOT NULL,
     audience_score INT NOT NULL,
-    audience_average_rating INT NOT NULL,
     user_ratings INT NOT NULL,
     top_critics_tomatometer INT NOT NULL,
-    top_critics_average_rating INT NOT NULL,
+    top_critics_average_rating DOUBLE PRECISION NOT NULL,
     top_critics_reviews_counted INT NOT NULL,
     top_critics_fresh INT NOT NULL,
     top_critics_rotten INT NOT NULL,
     PRIMARY KEY (id)
 );
 
+\copy movie (movie_id, title, year, video, picture, all_critics_tomatometer, all_critics_average_rating, all_critics_reviews_counted, all_critics_fresh, all_critics_rotten, consensus, audience_score, user_ratings, top_critics_tomatometer, top_critics_average_rating, top_critics_reviews_counted, top_critics_fresh, top_critics_rotten) FROM '../newDataTest.csv' CSV HEADER
+
+SELECT COUNT(*) FROM movie;

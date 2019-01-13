@@ -1,24 +1,45 @@
 const fs = require("fs");
-const exec = require("child_process").execFile;
+const { exec } = require("child_process");
 const cluster = require("cluster");
 console.time("dbsave");
 const split = require("split");
 const Movie = require("../models/Movie.js");
 // const newData = require("./generateData.js");
 const db = require("./config.js");
-// const dbPostGres = require("./seedPostgres.js");
+const postgresClient = require("./PostgreSQL/connectPostgres.js");
 
-var seedMongoData = callback => {
+const seedMongoData = callback => {
   let command =
-    "mongoimport -d spottypotatoes -c movies --type csv --headerline --file ./newDataTest.csv";
+    "mongoimport -d spottypotatoes -c movies --type csv --headerline --numInsertionWorkers 4 --file  ./newDataTest.csv";
   exec(command, (err, stdout, stderr) => {
     if (err) {
       console.log(err);
-    } else {
-      console.log("seeded data");
-      // callback("newData.csv");
     }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+    console.log("seeded data");
+    callback();
   });
+};
+
+const createSQLDatabase = () => {};
+
+const seedSQLData = callback => {
+  let stream = postgresClient.query(copyFrom("COPY movie from STDIN"));
+  fileStream = fs.createReadStream("newDataTest.csv");
+  fileStream.on("error", done);
+  stream.on("error", done);
+  stream.on("end", done);
+  fileStream.pipe(stream);
+  // exec(command, (err, stdout, stderr) => {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   console.log(`stdout: ${stdout}`);
+  //   console.log(`stderr: ${stderr}`);
+  //   console.log("seeded data");
+  //   callback();
+  // });
 };
 
 // JSON.parse(fs.readFileSync(__dirname + "/newData.csv", "utf-8"));
@@ -85,5 +106,6 @@ var seedMongoData = callback => {
 //   }
 // };
 
-module.exports = seedMongoData;
+module.exports.seedMongoData = seedMongoData;
+module.exports.seedSQLData = seedSQLData;
 // module.exports = seedData(newData);
