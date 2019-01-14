@@ -1,9 +1,9 @@
-
+-- EXPLAIN ANALYZE
 DROP DATABASE IF EXISTS spottypotatoes;
-DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS movies;
 
 CREATE DATABASE spottypotatoes;
-CREATE TABLE movie (
+CREATE TABLE movies (
     id SERIAL,
     movie_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,

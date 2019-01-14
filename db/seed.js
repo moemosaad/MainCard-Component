@@ -25,21 +25,21 @@ const seedMongoData = callback => {
 const createSQLDatabase = () => {};
 
 const seedSQLData = callback => {
-  let stream = postgresClient.query(copyFrom("COPY movie from STDIN"));
-  fileStream = fs.createReadStream("newDataTest.csv");
-  fileStream.on("error", done);
-  stream.on("error", done);
-  stream.on("end", done);
-  fileStream.pipe(stream);
-  // exec(command, (err, stdout, stderr) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   console.log(`stdout: ${stdout}`);
-  //   console.log(`stderr: ${stderr}`);
-  //   console.log("seeded data");
-  //   callback();
-  // });
+  // let stream = postgresClient.query(copyFrom("COPY movie from STDIN"));
+  // fileStream = fs.createReadStream("newDataTest.csv");
+  // fileStream.on("error", done);
+  // stream.on("error", done);
+  // stream.on("end", done);
+  // fileStream.pipe(stream);
+  let sql = fs.readFileSync("./Postgres/Movies.SQL").toString();
+  postgresClient.query(sql, (err, result) => {
+    console.log("ok2");
+    // done();
+    if (err) {
+      console.log("err: ", err);
+    }
+    callback();
+  });
 };
 
 // JSON.parse(fs.readFileSync(__dirname + "/newData.csv", "utf-8"));
