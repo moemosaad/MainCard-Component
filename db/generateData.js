@@ -27,6 +27,12 @@ let dataInfo = {
 
 let randomData = {};
 
+const collectRandomData = () => {
+  for (var key in dataInfo) {
+    randomData[key] = extractData(dataInfo[key], key);
+  }
+};
+
 const extractData = (infoObj, info) => {
   if (Array.isArray(infoObj)) {
     return data.map(item => item[infoObj[0]][infoObj[1]][info]);
@@ -34,14 +40,63 @@ const extractData = (infoObj, info) => {
   return data.map(item => item[infoObj][info]);
 };
 
-const collectRandomData = () => {
-  for (var key in dataInfo) {
-    randomData[key] = extractData(dataInfo[key], key);
-  }
-};
-const randomize = data => {
-  let dataArr = randomData[data];
-  return dataArr[Math.floor(Math.random() * Math.floor(dataArr.length))];
+const generateRandomData = () => {
+  collectRandomData();
+
+  const batchSize = 800;
+  const limit = 1020;
+  let idCount = 101;
+  let headerFlag = false;
+  fs.truncate("./newDataTest.csv", 0, () => {
+    let csvfile = fs.createWriteStream("./newDataTest.csv");
+
+    let writeBatchToFile = () => {
+      let newData;
+      let batchData = [];
+      let batchStart = 0;
+
+      if (idCount >= limit + 101) {
+        return;
+      }
+
+      while (batchStart < batchSize && idCount < limit + 101) {
+        let createdData = createNewData(newData, idCount);
+        batchData.push(createdData);
+        batchStart++;
+        idCount++;
+      }
+      console.log(idCount - 101);
+
+      batchData = convertJSONToCSV(batchData, headerFlag, idCount, limit);
+      csvfile.write(batchData);
+
+      if (!headerFlag) {
+        headerFlag = !headerFlag;
+      }
+
+      writeBatchToFile();
+    };
+
+    writeBatchToFile();
+
+    csvfile.end(() => {
+      return;
+    });
+
+    csvfile.on("finish", () => {
+      console.log("writes are now finished");
+      console.timeEnd("dbsave");
+      // seedMongoData(() => {
+      //   fs.unlink("./newDataTest.csv", err => {
+      //     if (err) {
+      //       console.log("file unlink error: ", err);
+      //     }
+      //     console.log("deleted csv file");
+      //     console.timeEnd("dbsave");
+      //   });
+      // });
+    });
+  });
 };
 
 const createNewData = (newData, index) => {
@@ -71,65 +126,14 @@ const createNewData = (newData, index) => {
   return newData;
 };
 
-const generateRandomData = () => {
-  const batchSize = 800;
-  const limit = 1000;
-  let idCount = 101;
-  let headerFlag = false;
-
-  fs.truncate("./newDataTest.csv", 0, () => {
-    let csvfile = fs.createWriteStream("./newDataTest.csv");
-
-    let writeBatchToFile = () => {
-      let newData;
-      let batchData = [];
-      let batchStart = 0;
-
-      if (idCount >= limit + 101) {
-        return;
-      }
-
-      while (batchStart < batchSize && idCount < limit + 101) {
-        let createdData = createNewData(newData, idCount);
-        batchData.push(createdData);
-        batchStart++;
-        idCount++;
-      }
-      console.log(idCount);
-
-      batchData = convertJSONToCSV(batchData, headerFlag, idCount, limit);
-      csvfile.write(batchData);
-
-      if (!headerFlag) {
-        headerFlag = !headerFlag;
-      }
-
-      writeBatchToFile();
-    };
-
-    writeBatchToFile();
-
-    csvfile.end(() => {
-      return;
-    });
-
-    csvfile.on("finish", () => {
-      console.log("writes are now finished");
-      // seedMongoData(() => {
-      //   fs.unlink("./newDataTest.csv", err => {
-      //     if (err) {
-      //       console.log("file unlink error: ", err);
-      //     }
-      //     console.log("deleted csv file");
-      //     console.timeEnd("dbsave");
-      //   });
-      // });
-    });
-  });
+const randomize = data => {
+  let dataArr = randomData[data];
+  return dataArr[Math.floor(Math.random() * Math.floor(dataArr.length))];
 };
 
 const convertJSONToCSV = (batchData, headerFlag, count, limit) => {
   let json2csv;
+  let transformOpts = { encoding: "utf8" };
   let fields = [
     "movie_id",
     "title",
@@ -152,9 +156,9 @@ const convertJSONToCSV = (batchData, headerFlag, count, limit) => {
   ];
 
   if (!headerFlag) {
-    json2csv = new Json2csvParser({ fields });
+    json2csv = new Json2csvParser({ fields }, transformOpts);
   } else if (headerFlag) {
-    json2csv = new Json2csvParser({ fields, header: false });
+    json2csv = new Json2csvParser({ fields, header: false }, transformOpts);
   }
 
   let csv = json2csv.parse(batchData);
@@ -165,8 +169,8 @@ const convertJSONToCSV = (batchData, headerFlag, count, limit) => {
   return csv;
 };
 
-collectRandomData();
 generateRandomData();
+module.exports = generateRandomData;
 
 // var convertJSONtoCSVMongo = (batchData, current, end) => {
 //   if (current >= end - 1) {
@@ -215,5 +219,3 @@ generateRandomData();
 //   batchData += JSON.stringify(newData) + ", ";
 //   console.log("ok");
 // } else
-
-// module.exports = generateRandomData();
