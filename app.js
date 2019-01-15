@@ -6,7 +6,7 @@ const cors = require("cors");
 const compression = require("compression");
 const app = express();
 
-const db = require("./db/config.js");
+// const db = require("./db/config.js");
 
 //uncomment to seed data
 // const seed = require("./db/seed.js");

@@ -73,9 +73,7 @@ const AllCritics = ({ all_critics, consensus, top_critics_tomatometer }) => {
           </div>
 
           <p className="critic_consensus superPageFontColor">
-            <span className="subtle superPageFontColor">
-              Critics Consensus:
-            </span>
+            <span className="subtle superPageFontColor">Critics Consensus:</span>
             {consensus}
           </p>
         </div>
