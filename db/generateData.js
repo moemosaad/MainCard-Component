@@ -1,12 +1,7 @@
 const fs = require("fs");
-const Movie = require("../models/Movie.js");
-// const db = require("./config.js");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
-const Json2csvParser = require("json2csv").Parser;
 const header = require("./header.js");
-// const sqlDb = require("./PostgreSQL/seedPostgres.js");
 const { seedMongoData, seedPostgresData } = require("./seed.js");
-// const seedMongoData = require("./seed.js");
 
 console.time("Time to generate CSV data");
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
@@ -73,9 +68,9 @@ const generateRandomData = () => {
       csvWriter.writeRecords(batchData).then(() => {
         if (idCount === limit + 101) {
           console.timeEnd("Time to generate CSV data");
-          // console.time("Time to seed Mongo");
+          // console.time("Time to seed Mongo"); //Uncomment both to seed mongo
           // seedMongo();
-          console.time("Time to seed Postgres");
+          console.time("Time to seed Postgres"); //Uncomment both to seed postgres
           seedPostgres();
         }
         writeBatchToFile();
@@ -99,6 +94,8 @@ const createNewData = (newData, index) => {
     all_critics_fresh: randomize("fresh"),
     consensus: randomize("consensus"),
     audience_score: randomize("audience_score"),
+    audience_average_rating: randomize("average_rating"),
+    audience_user_rating: randomize("user_ratings"),
     average_rating: randomize("average_rating"),
     user_ratings: randomize("user_ratings"),
     top_critics_tomatometer: randomize("tomatometer"),
@@ -132,42 +129,14 @@ const seedMongo = () => {
 const seedPostgres = () => {
   seedPostgresData(() => {
     console.timeEnd("Time to seed Postgres");
-    // fs.unlink("./newDataTest.csv", err => {
-    //   if (err) {
-    //     // console.log("file unlink error: ", err);
-    //   }
-    //   return;
-    // });
+    fs.unlink("./newDataTest.csv", err => {
+      if (err) {
+        console.log("file unlink error: ", err);
+      }
+      return;
+    });
   });
 };
 
 generateRandomData();
 module.exports = generateRandomData;
-
-//beneath storeBatch
-// var storeBatch = () => {
-// dataArr = [];
-// for (var i = start + 101; i < end + 101; i++) {
-//   let index = i - 101;
-//   var decoratedData = decorateNewData(newData, i);
-//   dataArr.push(decoratedData);
-// }
-// Movie.collection.insertMany(dataArr, () => {
-//   if (total < limit - batchSize) {
-//     total += batchSize;
-//     console.log(start, end);
-//     storeBatch((start += batchSize), (end += batchSize));
-//   } else {
-//     console.log(start, end);
-//     console.timeEnd("dbsave");
-//     return;
-//   }
-// });
-// };
-
-// beneath write to file
-// if (num === 101) {
-//   // file.write("[" + JSON.stringify(newData) + ", ");
-//   batchData += JSON.stringify(newData) + ", ";
-//   console.log("ok");
-// } else

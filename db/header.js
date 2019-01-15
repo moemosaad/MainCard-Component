@@ -17,7 +17,8 @@ module.exports = [
   { id: "all_critics_rotten", title: "all_critics_rotten" },
   { id: "consensus", title: "consensus" },
   { id: "audience_score", title: "audience_score" },
-  { id: "user_ratings", title: "user_ratings" },
+  { id: "audience_average_rating", title: "audience_average_rating" },
+  { id: "audience_user_rating", title: "audience_user_rating" },
   { id: "top_critics_tomatometer", title: "top_critics_tomatometer" },
   {
     id: "top_critics_average_rating",

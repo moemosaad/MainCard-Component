@@ -14,8 +14,8 @@ const TopCritics = ({ top_critics, consensus, all_critics_tomatometer }) => {
                 <span
                   className={
                     "meter-tomato icon big medium-xs " +
-                    (top_critics.tomatometer > 59
-                      ? top_critics.tomatometer > 74 &&
+                    (top_critics.top_critics_tomatometer > 59
+                      ? top_critics.top_critics_tomatometer > 74 &&
                         all_critics_tomatometer > 74
                         ? "certified_fresh"
                         : "fresh"
@@ -24,7 +24,10 @@ const TopCritics = ({ top_critics, consensus, all_critics_tomatometer }) => {
                   }
                 />
                 <span className="meter-value superPageFontColor">
-                  <span id="top_tomatometer">{top_critics.tomatometer}</span>%
+                  <span id="top_tomatometer">
+                    {top_critics.top_critics_tomatometer}
+                  </span>
+                  %
                 </span>
               </a>
             </div>
@@ -34,25 +37,25 @@ const TopCritics = ({ top_critics, consensus, all_critics_tomatometer }) => {
                 <span className="subtle superPageFontColor">
                   Average Rating:{" "}
                 </span>
-                {top_critics.average_rating}/10
+                {top_critics.top_critics_average_rating}/10
               </div>
               <div className="superPageFontColor">
                 <span className="subtle superPageFontColor">
                   Reviews Counted:{" "}
                 </span>
-                <span>{top_critics.reviews_counted}</span>
+                <span>{top_critics.top_critics_reviews_counted}</span>
               </div>
               <div className="superPageFontColor">
                 <span className="subtle superPageFontColor audience-info">
                   Fresh:{" "}
                 </span>
-                <span>{top_critics.fresh}</span>
+                <span>{top_critics.top_critics_fresh}</span>
               </div>
               <div className="superPageFontColor">
                 <span className="subtle superPageFontColor audience-info">
                   Rotten:{" "}
                 </span>
-                <span>{top_critics.rotten}</span>
+                <span>{top_critics.top_critics_rotten}</span>
               </div>
             </div>
           </div>
@@ -65,16 +68,14 @@ const TopCritics = ({ top_critics, consensus, all_critics_tomatometer }) => {
             <div
               className={
                 "progress-bar " +
-                (top_critics.tomatometer > 59 ? "fresh" : "rotten")
+                (top_critics.top_critics_tomatometer > 59 ? "fresh" : "rotten")
               }
-              style={{ width: top_critics.tomatometer + "%" }}
+              style={{ width: top_critics.top_critics_tomatometer + "%" }}
             />
           </div>
 
           <p className="critic_consensus superPageFontColor">
-            <span className="subtle superPageFontColor">
-              Critics Consensus:
-            </span>
+            <span className="subtle superPageFontColor">Critics Consensus:</span>
             {consensus}
           </p>
         </div>

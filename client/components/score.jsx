@@ -43,8 +43,8 @@ const Score = ({ score, all, toggleTopCritics }) => {
         </h3>
         <div className="tab-content">
           <Critics
-            top_critics={score.top_critics}
-            all_critics={score.all_critics}
+            top_critics={score}
+            all_critics={score}
             consensus={score.consensus}
             all={all}
           />
