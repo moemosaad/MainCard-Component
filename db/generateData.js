@@ -1,13 +1,14 @@
 const fs = require("fs");
 const Movie = require("../models/Movie.js");
 // const db = require("./config.js");
-// const createCsvWriter = require("csv-writer").createObjectCsvWriter;
+const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const Json2csvParser = require("json2csv").Parser;
+const header = require("./header.js");
 // const sqlDb = require("./PostgreSQL/seedPostgres.js");
-// const { seedMongoData, seedSQLData } = require("./seed.js");
+const { seedMongoData, seedPostgresData } = require("./seed.js");
 // const seedMongoData = require("./seed.js");
 
-console.time("dbsave");
+console.time("Time to generate CSV data");
 let data = JSON.parse(fs.readFileSync(__dirname + "/data.json").toString());
 
 let dataInfo = {
@@ -42,13 +43,15 @@ const extractData = (infoObj, info) => {
 
 const generateRandomData = () => {
   collectRandomData();
-
   const batchSize = 800;
-  const limit = 1020;
+  const limit = 10000;
   let idCount = 101;
-  let headerFlag = false;
+
   fs.truncate("./newDataTest.csv", 0, () => {
-    let csvfile = fs.createWriteStream("./newDataTest.csv");
+    const csvWriter = createCsvWriter({
+      path: "./newDataTest.csv",
+      header: header
+    });
 
     let writeBatchToFile = () => {
       let newData;
@@ -67,35 +70,19 @@ const generateRandomData = () => {
       }
       console.log(idCount - 101);
 
-      batchData = convertJSONToCSV(batchData, headerFlag, idCount, limit);
-      csvfile.write(batchData);
-
-      if (!headerFlag) {
-        headerFlag = !headerFlag;
-      }
-
-      writeBatchToFile();
+      csvWriter.writeRecords(batchData).then(() => {
+        if (idCount === limit + 101) {
+          console.timeEnd("Time to generate CSV data");
+          // console.time("Time to seed Mongo");
+          // seedMongo();
+          console.time("Time to seed Postgres");
+          seedPostgres();
+        }
+        writeBatchToFile();
+      });
     };
 
     writeBatchToFile();
-
-    csvfile.end(() => {
-      return;
-    });
-
-    csvfile.on("finish", () => {
-      console.log("writes are now finished");
-      console.timeEnd("dbsave");
-      // seedMongoData(() => {
-      //   fs.unlink("./newDataTest.csv", err => {
-      //     if (err) {
-      //       console.log("file unlink error: ", err);
-      //     }
-      //     console.log("deleted csv file");
-      //     console.timeEnd("dbsave");
-      //   });
-      // });
-    });
   });
 };
 
@@ -131,66 +118,31 @@ const randomize = data => {
   return dataArr[Math.floor(Math.random() * Math.floor(dataArr.length))];
 };
 
-const convertJSONToCSV = (batchData, headerFlag, count, limit) => {
-  let json2csv;
-  let transformOpts = { encoding: "utf8" };
-  let fields = [
-    "movie_id",
-    "title",
-    "year",
-    "video",
-    "picture",
-    "all_critics_tomatometer",
-    "all_critics_average_rating",
-    "all_critics_reviews_counted",
-    "all_critics_fresh",
-    "all_critics_rotten",
-    "consensus",
-    "audience_score",
-    "user_ratings",
-    "top_critics_tomatometer",
-    "top_critics_average_rating",
-    "top_critics_reviews_counted",
-    "top_critics_fresh",
-    "top_critics_rotten"
-  ];
+const seedMongo = () => {
+  seedMongoData(() => {
+    console.timeEnd("Time to seed Mongo");
+    fs.unlink("./newDataTest.csv", err => {
+      if (err) {
+        console.log("file unlink error: ", err);
+      }
+    });
+  });
+};
 
-  if (!headerFlag) {
-    json2csv = new Json2csvParser({ fields }, transformOpts);
-  } else if (headerFlag) {
-    json2csv = new Json2csvParser({ fields, header: false }, transformOpts);
-  }
-
-  let csv = json2csv.parse(batchData);
-  if (count < limit) {
-    csv += "\n";
-  }
-
-  return csv;
+const seedPostgres = () => {
+  seedPostgresData(() => {
+    console.timeEnd("Time to seed Postgres");
+    // fs.unlink("./newDataTest.csv", err => {
+    //   if (err) {
+    //     // console.log("file unlink error: ", err);
+    //   }
+    //   return;
+    // });
+  });
 };
 
 generateRandomData();
 module.exports = generateRandomData;
-
-// var convertJSONtoCSVMongo = (batchData, current, end) => {
-//   if (current >= end - 1) {
-//     count++;
-//     console.log("ok");
-//     batchData += JSON.stringify(newData);
-
-//     console.log(end, count);
-//     return;
-//   } else if (current % batchSize === 100) {
-//     count++;
-//     batchData += JSON.stringify(newData);
-//     file.write(batchData);
-//     batchData = "";
-//   } else {
-//     count++;
-//     batchData += JSON.stringify(newData);
-//   }
-//   return batchData;
-// };
 
 //beneath storeBatch
 // var storeBatch = () => {
