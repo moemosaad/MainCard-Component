@@ -72,7 +72,11 @@ class Main extends Component {
     id = window.location.search.substr(1).split("=")[1] || id;
     // let url = document.URL.substr(-3);
     // id = Number(url) ? url : id;
-    console.log(this.API_URL);
+    console.log(
+      this.API_URL,
+      id,
+      window.location.search.substr(1).split("=")[1]
+    );
     axios
       .get(this.API_URL + "/movies/" + id)
       .then(({ data }) => {

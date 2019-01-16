@@ -1,5 +1,5 @@
-const mongo = require("../db/config.js");
-const postgres = require("../db/PostgreSQL/connectPostgres.js");
+const mongo = require("../../db/config.js");
+const postgres = require("../../db/PostgreSQL/connectPostgres.js");
 const helper = require("./helper/routeHelpers.js");
 
 module.exports = {
@@ -21,14 +21,14 @@ module.exports = {
     //       res.send(500);
     //     });
     // });
-
     postgres.query(`SELECT * FROM movies m WHERE m.m = ${id}`, (err, data) => {
-      if (err) {
+      if (err || Array.isArray(data)) {
         console.log("Postgres query error: ", err);
         res.send(500);
       } else {
         console.timeEnd("Time to query Postgres");
         data = helper.mapData(data.rows[0]);
+        console.log(data);
         res.send(data);
       }
     });

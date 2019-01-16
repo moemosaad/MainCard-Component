@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS spottypotatoes;
 DROP TABLE IF EXISTS movies;
 
