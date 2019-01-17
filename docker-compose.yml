@@ -1,0 +1,24 @@
+version: "3"
+services:
+  web:
+    build: .
+    command: npm run start
+    volumes:
+      - .:/usr/app/ #correct paths?
+      - /usr/app/node_modules #correct paths?
+    ports:
+      - "9001:80" #correct port?
+    link:
+      - postgress
+    environment:
+      DATABASE_URL: postgres:// #need url
+  postgress:
+    image: postgres:9.5
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: spottypotatoes #do we need if movies.sql is creating?
+    volumes:
+      - database_data: /var/lib/postgresql/data

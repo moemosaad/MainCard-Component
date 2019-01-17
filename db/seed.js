@@ -1,8 +1,6 @@
 const fs = require("fs");
 const { exec } = require("child_process");
-const cluster = require("cluster");
-const Movie = require("../models/Movie.js");
-const db = require("./config.js");
+// const db = require("./config.js"); //Uncomment for mongo
 const copyFrom = require("pg-copy-streams").from;
 const postgres = require("./PostgreSQL/connectPostgres.js");
 
