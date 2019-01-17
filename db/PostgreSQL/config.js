@@ -1,5 +1,5 @@
 module.exports = {
-  host: "localhost",
+  host: "3.88.85.202",
   port: 5432,
   database: "spottypotatoes",
   user: "postgres",
