@@ -39,7 +39,7 @@ const extractData = (infoObj, info) => {
 const generateRandomData = () => {
   collectRandomData();
   const batchSize = 800;
-  const limit = 10000;
+  const limit = 10000000;
   let idCount = 101;
 
   fs.truncate("./newDataTest.csv", 0, () => {
