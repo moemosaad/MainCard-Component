@@ -3,6 +3,6 @@ module.exports = {
   port: 5432,
   database: "spottypotatoes",
   user: "postgres",
-  password: "postgress",
+  password: "postgres",
   max: "20"
 };
