@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Map to app binded port number
-EXPOSE 9001
+EXPOSE 8080
 
 # Run a command with arguments
 CMD ["npm", "start"]

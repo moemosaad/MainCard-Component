@@ -52,7 +52,7 @@ const Audience = ({ audience }) => {
 
         <div>
           <span className="subtle superPageFontColor">User Ratings:</span>
-          {audience.user_ratings}
+          {audience.user_rating}
         </div>
       </div>
     </div>

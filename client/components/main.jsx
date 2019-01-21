@@ -46,10 +46,10 @@ class Main extends Component {
       all: true,
       trailer: false
     };
-    this.API_URL =
-      process.env.NODE_ENV === "production"
-        ? "http://ec2-3-17-128-193.us-east-2.compute.amazonaws.com"
-        : "http://localhost:9001";
+    this.API_URL = "http://localhost:8080";
+    // process.env.NODE_ENV === "production"
+    //   ? "http://ec2-54-146-26-33.compute-1.amazonaws.com"
+    //   : "http://localhost:8080";
     this.getMovie = this.getMovie.bind(this);
     this.toggleTopCritics = this.toggleTopCritics.bind(this);
     this.toggleTrailer = this.toggleTrailer.bind(this);
@@ -69,18 +69,12 @@ class Main extends Component {
   }
 
   getMovie(id = 108) {
-    id = window.location.search.substr(1).split("=")[1] || id;
+    id = window.location.search.split("?")[1] || id;
     // let url = document.URL.substr(-3);
     // id = Number(url) ? url : id;
-    console.log(
-      this.API_URL,
-      id,
-      window.location.search.substr(1).split("=")[1]
-    );
     axios
       .get(this.API_URL + "/movies/" + id)
       .then(({ data }) => {
-        console.log(data);
         if (data.length === 0) {
         } else {
           this.setState({ movie: data });

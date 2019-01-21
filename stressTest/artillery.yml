@@ -1,0 +1,13 @@
+config:
+  target: "http://192.168.99.100/"
+  phases:
+    - duration: 1
+      arrivalRate: 1000
+  processor: "./generateRandomData.js"
+
+scenarios:
+  - name: "Get request"
+    flow:
+      - function: "generateRandomData"
+      - get:
+          url: "/?{{ id }}"
