@@ -19,8 +19,9 @@
     "test": "jest --verbose --detectOpenHandles",
     "test:watch": "jest --watchAll --verbose",
     "test:coverage": "jest --verbose --coverage",
-    "compile": "webpack -d --watch",
-    "server": "nodemon ./server/server.js",
+    "compile": "webpack -p --watch",
+    "react": "webpack -p",
+    "server": "node ./server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run compile\" ",
     "launch": "webpack -p && pm2 start ./server/server.js"
   },
