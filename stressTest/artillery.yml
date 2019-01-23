@@ -1,12 +1,12 @@
 config:
-  target: "http://localhost:8080/"
+  target: "http://localhost:8080/movies"
   phases:
     - duration: 60
-      arrivalRate: 1000
+      arrivalRate: 1
   processor: "./generateRandomData.js"
 
 scenarios:
   - flow:
       - function: "generateRandomData"
       - get:
-          url: "/?{{ id }}"
+          url: "/{{ id }}"

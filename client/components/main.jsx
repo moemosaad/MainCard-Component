@@ -48,8 +48,8 @@ class Main extends Component {
     };
     this.API_URL =
       process.env.NODE_ENV === "production"
-        ? "http://ec2-54-146-26-33.compute-1.amazonaws.com"
-        : "http://localhost:8081";
+        ? "http://107.21.131.157"
+        : "http://localhost:8080";
     this.getMovie = this.getMovie.bind(this);
     this.toggleTopCritics = this.toggleTopCritics.bind(this);
     this.toggleTrailer = this.toggleTrailer.bind(this);
