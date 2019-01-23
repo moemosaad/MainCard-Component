@@ -12,6 +12,9 @@ const app = express();
 //uncomment to seed data
 // const seed = require("./db/seed.js");
 app.use(cors());
+app.use(compression());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "../public")));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -20,10 +23,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "../public")));
-app.use(compression());
 
 const routes = require("./routes/routes.js");
 

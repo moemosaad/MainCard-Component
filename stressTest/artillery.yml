@@ -6,8 +6,7 @@ config:
   processor: "./generateRandomData.js"
 
 scenarios:
-  - name: "Get request"
-    flow:
+  - flow:
       - function: "generateRandomData"
       - get:
           url: "/{{ id }}"
