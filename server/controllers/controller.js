@@ -5,6 +5,7 @@ const helper = require("./helper/routeHelpers.js");
 module.exports = {
   getOne: (req, res) => {
     let id = parseInt(req.params.id);
+    console.log(id);
     console.time("Time to query Postgres");
     // console.time("Time to query Mongo");
     // mongo.then(client => {
@@ -28,7 +29,6 @@ module.exports = {
       } else {
         console.timeEnd("Time to query Postgres");
         data = helper.mapData(data.rows[0]);
-        console.log(data);
         res.send(data);
       }
     });
