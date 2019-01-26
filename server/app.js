@@ -7,10 +7,6 @@ const cors = require("cors");
 const compression = require("compression");
 const app = express();
 
-// const db = require("./db/config.js");
-
-//uncomment to seed data
-// const seed = require("./db/seed.js");
 app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
