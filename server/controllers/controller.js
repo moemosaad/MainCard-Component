@@ -26,6 +26,7 @@ module.exports = {
     //       res.send(500);
     //     });
     // });
+
     redis.get(id, (err, cache) => {
       if (err) {
         res.send(500);
