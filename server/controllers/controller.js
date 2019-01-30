@@ -9,8 +9,8 @@ module.exports = {
     // if (cache) {
     //   res.send(JSON.parse(cache));
     // }
-    // console.time("Time to query Postgres");
-    // console.time("Time to get Redis cache");
+    console.time("Time to query Postgres");
+    console.time("Time to get Redis cache");
     // console.time("Time to query Mongo");
     // mongo.then(client => {
     //   client
@@ -31,8 +31,8 @@ module.exports = {
       if (err) {
         res.send(500);
       } else if (cache !== null) {
-        // console.timeEnd("Time to get Redis cache");
-        res.send(JSON.parse(cache));
+        console.timeEnd("Time to get Redis cache");
+        res.send(cache);
       } else {
         postgres.query(
           `SELECT * FROM movies m WHERE m.m = ${id}`,
@@ -41,11 +41,10 @@ module.exports = {
               console.log("Postgres query error: ", err);
               res.send(500);
             } else {
-              // console.timeEnd("Time to query Postgres");
+              console.timeEnd("Time to query Postgres");
               data = helper.mapData(data.rows[0]);
-              let hash = JSON.stringify(data);
               let key = JSON.stringify(data.id);
-              redis.set(key, hash, () => {
+              redis.set(key, data, () => {
                 res.send(data);
               });
             }
