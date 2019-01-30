@@ -32,7 +32,7 @@ module.exports = {
         res.send(500);
       } else if (cache !== null) {
         console.timeEnd("Time to get Redis cache");
-        res.send(cache);
+        res.send(JSON.parse(cache));
       } else {
         postgres.query(
           `SELECT * FROM movies m WHERE m.m = ${id}`,
@@ -43,8 +43,9 @@ module.exports = {
             } else {
               console.timeEnd("Time to query Postgres");
               data = helper.mapData(data.rows[0]);
+              let hash = JSON.stringify(data);
               let key = JSON.stringify(data.id);
-              redis.set(key, data, () => {
+              redis.set(key, hash, () => {
                 res.send(data);
               });
             }
