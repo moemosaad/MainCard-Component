@@ -25,18 +25,20 @@ Include logo/demo screenshot etc.
 
 ## Built with
 
+### Tech/frameworks used
+
 * React
 * NodeJs/Express
 * PostgreSQL
 
-Features
+#### Features
 
 * NGINX
 * Redis
 * Docker
 * AWS EC2 (Optional)
 
-Testing
+### Testing
 
 * Artillery
 * Loader.io
