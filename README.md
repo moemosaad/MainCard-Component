@@ -1,12 +1,15 @@
 # MainCard-Component
 
-This is the video player and Tomatometer rating component for the recreation of the Rotten Tomatoes website for the Front End Capstone.
+This is a scaled microservice for an open-sourcve video player and Tomatometer rating component for the recreation of the Rotten Tomatoes website.
 
 ## Motivation
+
 This project was developed to gain a fundemental understanding of microservice system design.
 
 ### Prerequisites
-Preferably, at least 5 Amazon EC2 instances with static ip addresses will be needed for the deployment of this service. 1 for the load balancer, 1 for the database server, and 3 or more for microservice instances.
+
+At least 5 Amazon EC2 instances with static ip addresses is prefered for the deployment of this service. 
+1 for the load balancer, 1 for the database server, and 3 or more for microservice instances.
 
 ### Installing
 
@@ -14,6 +17,7 @@ Preferably, at least 5 Amazon EC2 instances with static ip addresses will be nee
 ## Running the tests
 
 ## Screenshots
+
 Include logo/demo screenshot etc.
 
 ## Deployment
@@ -21,21 +25,21 @@ Include logo/demo screenshot etc.
 
 ## Built with
 
-*React
-*NodeJs/Express
-*PostgreSQL
+* React
+* NodeJs/Express
+* PostgreSQL
 
 Features
 
-*NGINX
-*Redis
-*Docker
-*AWS EC2 (Optional)
+* NGINX
+* Redis
+* Docker
+* AWS EC2 (Optional)
 
 Testing
 
-*Artillery
-*Loader.io
+* Artillery
+* Loader.io
 
 ## Authors
 
