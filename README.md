@@ -25,7 +25,7 @@ Include logo/demo screenshot etc.
 
 ## Built with
 
-### Tech/frameworks used
+#### Tech/frameworks used
 
 * React
 * NodeJs/Express
@@ -38,12 +38,14 @@ Include logo/demo screenshot etc.
 * Docker
 * AWS EC2 (Optional)
 
-### Testing
+#### Testing
 
 * Artillery
 * Loader.io
 
 ## Authors
+
+Moe Mosaad
 
 ## License
 
