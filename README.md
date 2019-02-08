@@ -49,7 +49,6 @@ To start web service
 
 To start database
 
-  1. 
 
 ### Manually
 
