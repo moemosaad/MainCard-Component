@@ -4,7 +4,7 @@ This is a scaled microservice for an open-source video player and Tomatometer ra
 
 ## Motivation
 
-This project was developed to gain a fundemental understanding of microservice system design.
+This project was developed to gain a fundamental understanding of microservice system design.
 
 ### Prerequisites
 
