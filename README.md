@@ -11,15 +11,6 @@ This project was developed to gain a fundamental understanding of microservice s
 At least 5 Amazon EC2 instances with static ip addresses is preferred for the deployment of this service. 
 1 for the load balancer, 1 for the database server, and 3 or more for microservice instances.
 
-### Installing
-
-
-## Running the tests
-
-## Screenshots
-
-Include logo/demo screenshot etc.
-
 ## Deployment
 
 ### Docker
@@ -59,6 +50,22 @@ Within MainCard-Component directory:
    npm start
 ```
 
+## Running the tests
+
+### Artillery
+
+ 1. In stressTest directory, run
+ ```
+ artillery run artillery.yml
+ ```
+
+### Loader.io
+ 
+  1. Remove existing and add new loader.io file in public directory. Send requests to 
+  ```
+  movies/%{*:101-10000101}
+  ```
+  
 ## Built with
 
 #### Tech/frameworks used
